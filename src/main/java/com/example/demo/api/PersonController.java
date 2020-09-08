@@ -2,7 +2,6 @@ package com.example.demo.api;
 
 import com.example.demo.model.Person;
 import com.example.demo.service.PersonService;
-import com.sun.istack.internal.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,8 +23,9 @@ public class PersonController {
     public PersonController(PersonService personService) {
         this.personService = personService;
     }
+
     @PostMapping
-    public void addPerson(@Valid @NotNull @RequestBody Person person){
+    public void addPerson(@Valid @RequestBody Person person){
         personService.addPerson(person);
     }
 
@@ -46,12 +46,7 @@ public class PersonController {
     }
 
     @PutMapping(path = "{id}")
-    public void updatePerson(@PathVariable("id") UUID id,@Valid @NotNull @RequestBody Person person){
+    public void updatePerson(@PathVariable("id") UUID id,@Valid  @RequestBody Person person){
         personService.updatePerson(id,person);
     }
-
-
-
-
-
 }

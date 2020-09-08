@@ -26,7 +26,4 @@ public interface PersonDao {
 
     int updatePersonByid(UUID id,Person person);
 
-
-
-
 }
